@@ -31,8 +31,8 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { getCategoryIcon, getCategoryLabel } from "@/lib/data";
-import QRScannerModal from "../_components/qr-scanner-modal";
-import { AttendeeCard } from "../_components/attendee-card";
+import QRScannerModal from "./_components/qr-scanner-modal";
+import { AttendeeCard } from "./_components/attendee-card";
 
 export default function EventDashboardPage() {
   const params = useParams();

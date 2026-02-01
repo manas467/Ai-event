@@ -55,28 +55,23 @@ export const store = mutation({
 });
 
 // Get current authenticated user
+// convex/users.js
 export const getCurrentUser = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
-      return null;
-    }
+    if (!identity) return null;
 
-    // 🔹 Lookup by tokenIdentifier
     const user = await ctx.db
       .query("users")
-      .withIndex("by_token", (q) =>
+      .withIndex("by_token", q =>
         q.eq("tokenIdentifier", identity.tokenIdentifier)
       )
-      .unique();
+      .first();
 
-    if (!user) {
-      throw new Error("User not found");
-    }
-
-    return user;
+    return user ?? null; // ✅ DO NOT THROW
   },
 });
+
 
 // Complete onboarding (attendee preferences)
 export const completeOnboarding = mutation({
