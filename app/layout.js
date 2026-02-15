@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
       <body className="bg-linear-to-br from-gray-950 via-zinc-900 to-stone-900 text-white">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <ClerkProvider 
